@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[YOUR NAME] — [YOUR TITLE]</title>
+  <meta name="description" content="[One-line elevator pitch for SEO/meta description]" />
+  <link rel="icon" href="images/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="#top" class="nav__logo">[YOUR NAME]</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact" class="nav__cta">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero container">
+      <p class="hero__eyebrow">[YOUR TITLE / ROLE]</p>
+      <h1 class="hero__headline">
+        [BIG BOLD HEADLINE — your elevator pitch, e.g. "i design products that <span class="highlight">people actually want to use</span>"]
+      </h1>
+      <p class="hero__subtext">[1-2 sentence supporting subtext — who you help and how]</p>
+      <div class="hero__cta-row">
+        <a href="#work" class="btn btn--primary">See my work</a>
+        <a href="#contact" class="btn btn--ghost">Get in touch</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about container">
+      <div class="about__photo">
+        <img src="images/profile-placeholder.jpg" alt="[YOUR NAME]" />
+        <!-- PLACEHOLDER: profile photo -->
+      </div>
+      <div class="about__text">
+        <h2 class="section-heading">i'm [YOUR NAME], and <span class="highlight">[ONE-LINE PERSONAL HOOK]</span></h2>
+        <p>[PLACEHOLDER: 2-4 sentence bio. Who you are, what you do, what drives you.]</p>
+        <p>[PLACEHOLDER: current role/company, years of experience, or notable background.]</p>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES / WORK -->
+    <section id="work" class="work container">
+      <h2 class="section-heading">i've been busy building <span class="highlight">things that matter</span></h2>
+
+      <article class="case-study">
+        <div class="case-study__media">
+          <img src="images/project-placeholder-1.jpg" alt="[PROJECT 1 TITLE]" />
+          <!-- PLACEHOLDER: project screenshot(s) or video -->
+        </div>
+        <div class="case-study__body">
+          <h3>[PROJECT 1 TITLE]</h3>
+          <p class="case-study__summary">[One-line summary of the project]</p>
+          <p>[PLACEHOLDER: your role + what you did]</p>
+          <p class="case-study__outcome"><strong>Outcome:</strong> [PLACEHOLDER: result/metric]</p>
+          <a href="#" class="case-study__link">View project →</a>
+          <!-- PLACEHOLDER: link to live project, optional -->
+        </div>
+      </article>
+
+      <article class="case-study case-study--reverse">
+        <div class="case-study__media">
+          <img src="images/project-placeholder-2.jpg" alt="[PROJECT 2 TITLE]" />
+        </div>
+        <div class="case-study__body">
+          <h3>[PROJECT 2 TITLE]</h3>
+          <p class="case-study__summary">[One-line summary of the project]</p>
+          <p>[PLACEHOLDER: your role + what you did]</p>
+          <p class="case-study__outcome"><strong>Outcome:</strong> [PLACEHOLDER: result/metric]</p>
+          <a href="#" class="case-study__link">View project →</a>
+        </div>
+      </article>
+
+      <!-- Duplicate the <article class="case-study"> block above for each additional project -->
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="testimonials container">
+      <h2 class="section-heading">don't just take <span class="highlight">my word for it</span></h2>
+      <div class="testimonials__grid">
+        <div class="testimonial-card">
+          <p class="testimonial-card__quote">"[PLACEHOLDER: testimonial quote]"</p>
+          <div class="testimonial-card__author">
+            <img src="images/avatar-placeholder-1.jpg" alt="[NAME]" />
+            <div>
+              <p class="testimonial-card__name">[NAME]</p>
+              <p class="testimonial-card__role">[ROLE, Company]</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-card__quote">"[PLACEHOLDER: testimonial quote]"</p>
+          <div class="testimonial-card__author">
+            <img src="images/avatar-placeholder-2.jpg" alt="[NAME]" />
+            <div>
+              <p class="testimonial-card__name">[NAME]</p>
+              <p class="testimonial-card__role">[ROLE, Company]</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-card__quote">"[PLACEHOLDER: testimonial quote]"</p>
+          <div class="testimonial-card__author">
+            <img src="images/avatar-placeholder-3.jpg" alt="[NAME]" />
+            <div>
+              <p class="testimonial-card__name">[NAME]</p>
+              <p class="testimonial-card__role">[ROLE, Company]</p>
+            </div>
+          </div>
+        </div>
+        <!-- Duplicate .testimonial-card for each additional testimonial -->
+      </div>
+    </section>
+
+    <!-- SPEAKING / WRITING (delete this section if N/A) -->
+    <section id="speaking" class="speaking container">
+      <h2 class="section-heading">i also <span class="highlight">talk and write</span> about this stuff</h2>
+      <ul class="speaking__list">
+        <li><a href="#">[PLACEHOLDER: talk/article title]</a> — [venue/publication]</li>
+        <li><a href="#">[PLACEHOLDER: talk/article title]</a> — [venue/publication]</li>
+      </ul>
+    </section>
+
+    <!-- SERVICES (delete this section if N/A) -->
+    <section id="services" class="services container">
+      <h2 class="section-heading">here's how we could <span class="highlight">work together</span></h2>
+      <div class="services__grid">
+        <div class="service-card">
+          <h3>[SERVICE 1, e.g. Full-time]</h3>
+          <p>[PLACEHOLDER: description of this service offering]</p>
+        </div>
+        <div class="service-card">
+          <h3>[SERVICE 2, e.g. Freelance]</h3>
+          <p>[PLACEHOLDER: description of this service offering]</p>
+        </div>
+        <div class="service-card">
+          <h3>[SERVICE 3, e.g. Mentorship]</h3>
+          <p>[PLACEHOLDER: description of this service offering]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact container">
+      <h2 class="section-heading">let's <span class="highlight">talk</span></h2>
+      <p>[PLACEHOLDER: short contact prompt]</p>
+      <a href="mailto:your@email.com" class="btn btn--primary">your@email.com</a>
+      <!-- PLACEHOLDER: your email -->
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <p>&copy; <span id="year"></span> [YOUR NAME]. Built with HTML, CSS &amp; JS, hosted on GitHub Pages.</p>
+    <ul class="social-links">
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">GitHub</a></li>
+      <li><a href="#">X / Twitter</a></li>
+      <!-- PLACEHOLDER: your real social links -->
+    </ul>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
