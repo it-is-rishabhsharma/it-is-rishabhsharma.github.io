@@ -5,13 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rishabh Sharma — Manager, Strategy</title>
   <meta name="description" content="Growth & marketing automation professional — paid acquisition, GTM strategy, and AI automation pipelines." />
-  <link rel="icon" href="images/favicon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Rishabh Sharma — Manager, Strategy" />
+  <meta property="og:description" content="Growth & marketing automation professional — paid acquisition, GTM strategy, and AI automation pipelines." />
+  <meta property="og:image" content="https://it-is-rishabhsharma.github.io/images/og-image.png" />
+  <meta property="og:url" content="https://it-is-rishabhsharma.github.io/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rishabh Sharma — Manager, Strategy" />
+  <meta name="twitter:description" content="Growth & marketing automation professional — paid acquisition, GTM strategy, and AI automation pipelines." />
+  <meta name="twitter:image" content="https://it-is-rishabhsharma.github.io/images/og-image.png" />
+
+  <link rel="icon" type="image/png" href="images/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <header class="site-header">
     <nav class="nav container">
       <a href="#top" class="nav__logo">Rishabh Sharma</a>
@@ -19,12 +32,12 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav__links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact" class="nav__cta">Contact</a></li>
+        <li><a href="#about" data-nav-link>About</a></li>
+        <li><a href="#work" data-nav-link>Work</a></li>
+        <li><a href="#experience" data-nav-link>Experience</a></li>
+        <li><a href="#testimonials" data-nav-link>Testimonials</a></li>
+        <li><a href="#services" data-nav-link>Services</a></li>
+        <li><a href="#contact" class="nav__cta" data-nav-link>Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -32,23 +45,39 @@
   <main id="top">
     <!-- HERO -->
     <section class="hero container">
-      <p class="hero__eyebrow">Manager, Strategy — Founder's Office, Zopper</p>
-      <h1 class="hero__headline">
+      <p class="hero__eyebrow reveal">Manager, Strategy — Founder's Office, Zopper</p>
+      <h1 class="hero__headline reveal">
         i turn ad-spend, messy data, and manual busywork into <span class="highlight">systems that scale themselves</span>
       </h1>
-      <p class="hero__subtext">Growth & marketing automation professional running paid acquisition at 8–15x ROAS and building AI pipelines that save 20+ hours a week — currently in an insurtech's Founder's Office.</p>
-      <div class="hero__cta-row">
+      <p class="hero__subtext reveal">Growth & marketing automation professional running paid acquisition at 8–15x ROAS and building AI pipelines that save 20+ hours a week — currently in an insurtech's Founder's Office.</p>
+      <div class="hero__cta-row reveal">
         <a href="#work" class="btn btn--primary">See my work</a>
         <a href="#contact" class="btn btn--ghost">Get in touch</a>
+      </div>
+
+      <div class="stats reveal">
+        <div class="stat-tile">
+          <p class="stat-tile__value"><span data-count-to="15" data-prefix="" data-suffix="x">0x</span></p>
+          <p class="stat-tile__label">Up to 15x ROAS on paid campaigns</p>
+        </div>
+        <div class="stat-tile">
+          <p class="stat-tile__value"><span data-count-to="3500" data-prefix="" data-suffix="+">0+</span></p>
+          <p class="stat-tile__label">Qualified leads/month, automated end-to-end</p>
+        </div>
+        <div class="stat-tile">
+          <p class="stat-tile__value"><span data-count-to="19" data-prefix="₹" data-suffix="L+">₹0L+</span></p>
+          <p class="stat-tile__label">Saved annually through marketing automation</p>
+        </div>
       </div>
     </section>
 
     <!-- ABOUT -->
     <section id="about" class="about container">
-      <div class="about__photo">
+      <p class="section-number reveal">01</p>
+      <div class="about__photo reveal">
         <img src="images/profile.png" alt="Rishabh Sharma" />
       </div>
-      <div class="about__text">
+      <div class="about__text reveal">
         <h2 class="section-heading">i'm Rishabh Sharma, and <span class="highlight">I like turning chaos into pipelines</span></h2>
         <p>Manager, Strategy at the Founder's Office of an insurtech company — 4 years across performance & product marketing, GTM strategy, marketing automation, key-account management, and revenue operations. I run paid acquisition at 8–15x ROAS (~3,500 leads/month), and have built AI automation workflows saving ₹19L+ a year.</p>
         <p>Earlier, I drove ₹30+ Crore ARR out of Trivitron's CEO Office. Dual MBA (France & India) in Marketing, Strategy & Finance, and a national winner across multiple international competitions.</p>
@@ -57,10 +86,11 @@
 
     <!-- CASE STUDIES / WORK -->
     <section id="work" class="work container">
-      <h2 class="section-heading">i've been busy building <span class="highlight">things that matter</span></h2>
-      <p class="section-lead">A few selected highlights — the full role-by-role history is below.</p>
+      <p class="section-number reveal">02</p>
+      <h2 class="section-heading reveal">i've been busy building <span class="highlight">things that matter</span></h2>
+      <p class="section-lead reveal">A few selected highlights — the full role-by-role history is below.</p>
 
-      <article class="case-study">
+      <article class="case-study reveal">
         <div class="case-study__media">
           <img src="images/project-placeholder-1.jpg" alt="LinkedIn Paid Acquisition Engine" />
           <!-- PLACEHOLDER: screenshot of dashboards/ad-analysis tool, optional -->
@@ -73,7 +103,7 @@
         </div>
       </article>
 
-      <article class="case-study case-study--reverse">
+      <article class="case-study case-study--reverse reveal">
         <div class="case-study__media">
           <img src="images/project-placeholder-2.jpg" alt="AI Marketing Automation Pipeline" />
         </div>
@@ -85,7 +115,7 @@
         </div>
       </article>
 
-      <article class="case-study">
+      <article class="case-study reveal">
         <div class="case-study__media">
           <img src="images/project-placeholder-3.jpg" alt="AI Market Entry Evaluator" />
         </div>
@@ -97,7 +127,7 @@
         </div>
       </article>
 
-      <article class="case-study case-study--reverse">
+      <article class="case-study case-study--reverse reveal">
         <div class="case-study__media">
           <img src="images/project-placeholder-4.jpg" alt="Sales-Order Process Automation" />
         </div>
@@ -114,14 +144,16 @@
 
     <!-- EXPERIENCE -->
     <section id="experience" class="experience container">
-      <h2 class="section-heading">the <span class="highlight">full story</span>, role by role</h2>
+      <p class="section-number reveal">03</p>
+      <h2 class="section-heading reveal">the <span class="highlight">full story</span>, role by role</h2>
 
       <div class="timeline">
-        <div class="timeline__item">
+        <div class="timeline__item reveal">
           <div class="timeline__meta">
             <p class="timeline__dates">Jan '26 – Present</p>
             <p class="timeline__location">Noida, India</p>
           </div>
+          <div class="timeline__track"><span class="timeline__dot"></span></div>
           <div class="timeline__body">
             <h3>Manager, Strategy — Founder's Office <span class="timeline__company">· Zopper (Solvy Tech Solutions Pvt. Ltd.)</span></h3>
             <ul>
@@ -134,11 +166,12 @@
           </div>
         </div>
 
-        <div class="timeline__item">
+        <div class="timeline__item reveal">
           <div class="timeline__meta">
             <p class="timeline__dates">Dec '24 – Dec '25</p>
             <p class="timeline__location">Gurugram, India</p>
           </div>
+          <div class="timeline__track"><span class="timeline__dot"></span></div>
           <div class="timeline__body">
             <h3>Business Manager <span class="timeline__company">· Trivitron Healthcare</span></h3>
             <ul>
@@ -150,11 +183,12 @@
           </div>
         </div>
 
-        <div class="timeline__item">
+        <div class="timeline__item reveal">
           <div class="timeline__meta">
             <p class="timeline__dates">May '24 – Dec '24</p>
             <p class="timeline__location">Gurugram, India</p>
           </div>
+          <div class="timeline__track"><span class="timeline__dot"></span></div>
           <div class="timeline__body">
             <h3>Specialist, Research <span class="timeline__company">· Gartner</span></h3>
             <ul>
@@ -166,11 +200,12 @@
           </div>
         </div>
 
-        <div class="timeline__item">
+        <div class="timeline__item reveal">
           <div class="timeline__meta">
             <p class="timeline__dates">Jul '21 – Jul '22</p>
             <p class="timeline__location">New Delhi, India</p>
           </div>
+          <div class="timeline__track"><span class="timeline__dot"></span></div>
           <div class="timeline__body">
             <h3>Area Business Manager <span class="timeline__company">· International Garment Fair Association, Ministry of Textiles</span></h3>
             <ul>
@@ -180,11 +215,12 @@
           </div>
         </div>
 
-        <div class="timeline__item">
+        <div class="timeline__item reveal">
           <div class="timeline__meta">
             <p class="timeline__dates">Apr '21 – Jul '21</p>
             <p class="timeline__location">New Delhi, India</p>
           </div>
+          <div class="timeline__track"><span class="timeline__dot"></span></div>
           <div class="timeline__body">
             <h3>IT Graduate Trainee <span class="timeline__company">· Tata Consultancy Services</span></h3>
             <ul>
@@ -194,13 +230,14 @@
         </div>
       </div>
 
-      <h3 class="timeline__subheading">Internships & early career</h3>
+      <h3 class="timeline__subheading reveal">Internships & early career</h3>
       <div class="timeline timeline--compact">
-        <div class="timeline__item">
+        <div class="timeline__item reveal">
           <div class="timeline__meta">
             <p class="timeline__dates">Apr '23 – Jun '23</p>
             <p class="timeline__location">Gurugram, India</p>
           </div>
+          <div class="timeline__track"><span class="timeline__dot"></span></div>
           <div class="timeline__body">
             <h3>Marketing and Sales Intern <span class="timeline__company">· Jiyonwall</span></h3>
             <ul>
@@ -209,11 +246,12 @@
           </div>
         </div>
 
-        <div class="timeline__item">
+        <div class="timeline__item reveal">
           <div class="timeline__meta">
             <p class="timeline__dates">Oct '20 – Apr '21</p>
             <p class="timeline__location">New Delhi, India</p>
           </div>
+          <div class="timeline__track"><span class="timeline__dot"></span></div>
           <div class="timeline__body">
             <h3>Quality Manager <span class="timeline__company">· Prem Metal Industries</span></h3>
             <ul>
@@ -222,11 +260,12 @@
           </div>
         </div>
 
-        <div class="timeline__item">
+        <div class="timeline__item reveal">
           <div class="timeline__meta">
             <p class="timeline__dates">Jun '19 – Jul '19</p>
             <p class="timeline__location">New Delhi, India</p>
           </div>
+          <div class="timeline__track"><span class="timeline__dot"></span></div>
           <div class="timeline__body">
             <h3>Intern, Campaign Management <span class="timeline__company">· Youth Ubaal Foundation</span></h3>
             <ul>
@@ -239,20 +278,21 @@
 
     <!-- EDUCATION -->
     <section id="education" class="education container">
-      <h2 class="section-heading">and the <span class="highlight">education</span> behind it</h2>
+      <p class="section-number reveal">04</p>
+      <h2 class="section-heading reveal">and the <span class="highlight">education</span> behind it</h2>
       <div class="education__grid">
-        <div class="education-card">
+        <div class="education-card reveal">
           <h3>MBA, Marketing, Strategy & Finance</h3>
           <p class="education-card__school">Kedge Business School, France</p>
           <p class="education-card__dates">Dec '24 – Apr '24 · Marseille, France</p>
           <p>Selected among the top 2 students for a 4-month international immersion program, travelling across 12+ European countries.</p>
         </div>
-        <div class="education-card">
+        <div class="education-card reveal">
           <h3>MBA, Marketing, Strategy & Finance</h3>
           <p class="education-card__school">International Management Institute, New Delhi</p>
           <p class="education-card__dates">Aug '22 – Dec '24 · Delhi, India</p>
         </div>
-        <div class="education-card">
+        <div class="education-card reveal">
           <h3>Bachelor of Computer Applications (BCA)</h3>
           <p class="education-card__school">Maharaja Surajmal Institute, GGSIPU University</p>
           <p class="education-card__dates">Aug '17 – Sep '20</p>
@@ -263,9 +303,10 @@
 
     <!-- ACHIEVEMENTS & CERTIFICATIONS -->
     <section id="achievements" class="achievements container">
-      <h2 class="section-heading">a few <span class="highlight">wins along the way</span></h2>
+      <p class="section-number reveal">05</p>
+      <h2 class="section-heading reveal">a few <span class="highlight">wins along the way</span></h2>
       <div class="achievements__grid">
-        <div>
+        <div class="reveal">
           <h3>Competitions & recognition</h3>
           <ul class="plain-list">
             <li><strong>National Winner</strong> — Gilbarco Veeder Root Innovathon 2022 (₹1,00,000 prize, 2,000+ participants)</li>
@@ -278,7 +319,7 @@
           </ul>
           <p class="achievements__scores">CAT: 92.44 percentile &nbsp;·&nbsp; NMAT: 241/360</p>
         </div>
-        <div>
+        <div class="reveal">
           <h3>Certifications</h3>
           <ul class="plain-list">
             <li>ISO/IEC 27001:2022 Lead Auditor + Annex A, Information Security Controls</li>
@@ -296,9 +337,10 @@
 
     <!-- TESTIMONIALS -->
     <section id="testimonials" class="testimonials container">
-      <h2 class="section-heading">don't just take <span class="highlight">my word for it</span></h2>
+      <p class="section-number reveal">06</p>
+      <h2 class="section-heading reveal">don't just take <span class="highlight">my word for it</span></h2>
       <div class="testimonials__grid">
-        <div class="testimonial-card">
+        <div class="testimonial-card reveal">
           <p class="testimonial-card__quote">"[PLACEHOLDER: testimonial quote]"</p>
           <div class="testimonial-card__author">
             <img src="images/avatar-placeholder-1.jpg" alt="[NAME]" />
@@ -308,7 +350,7 @@
             </div>
           </div>
         </div>
-        <div class="testimonial-card">
+        <div class="testimonial-card reveal">
           <p class="testimonial-card__quote">"[PLACEHOLDER: testimonial quote]"</p>
           <div class="testimonial-card__author">
             <img src="images/avatar-placeholder-2.jpg" alt="[NAME]" />
@@ -318,7 +360,7 @@
             </div>
           </div>
         </div>
-        <div class="testimonial-card">
+        <div class="testimonial-card reveal">
           <p class="testimonial-card__quote">"[PLACEHOLDER: testimonial quote]"</p>
           <div class="testimonial-card__author">
             <img src="images/avatar-placeholder-3.jpg" alt="[NAME]" />
@@ -334,17 +376,18 @@
 
     <!-- SERVICES (delete this section if N/A) -->
     <section id="services" class="services container">
-      <h2 class="section-heading">here's how we could <span class="highlight">work together</span></h2>
+      <p class="section-number reveal">07</p>
+      <h2 class="section-heading reveal">here's how we could <span class="highlight">work together</span></h2>
       <div class="services__grid">
-        <div class="service-card">
+        <div class="service-card reveal">
           <h3>[SERVICE 1, e.g. Full-time]</h3>
           <p>[PLACEHOLDER: description of this service offering]</p>
         </div>
-        <div class="service-card">
+        <div class="service-card reveal">
           <h3>[SERVICE 2, e.g. Freelance]</h3>
           <p>[PLACEHOLDER: description of this service offering]</p>
         </div>
-        <div class="service-card">
+        <div class="service-card reveal">
           <h3>[SERVICE 3, e.g. Mentorship]</h3>
           <p>[PLACEHOLDER: description of this service offering]</p>
         </div>
@@ -353,10 +396,11 @@
 
     <!-- CONTACT -->
     <section id="contact" class="contact container">
-      <h2 class="section-heading">let's <span class="highlight">talk</span></h2>
-      <p>Open to conversations on growth, GTM strategy, and marketing automation.</p>
-      <a href="mailto:rishabh1999official@gmail.com" class="btn btn--primary">rishabh1999official@gmail.com</a>
-      <p style="margin-top: 16px;">+91-7042326206</p>
+      <p class="section-number reveal">08</p>
+      <h2 class="section-heading reveal">let's <span class="highlight">talk</span></h2>
+      <p class="reveal">Open to conversations on growth, GTM strategy, and marketing automation.</p>
+      <a href="mailto:rishabh1999official@gmail.com" class="btn btn--primary reveal">rishabh1999official@gmail.com</a>
+      <p class="reveal" style="margin-top: 16px;">+91-7042326206</p>
     </section>
   </main>
 
