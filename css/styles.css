@@ -251,6 +251,165 @@ body {
   text-decoration: none;
 }
 
+/* Section lead */
+.section-lead {
+  color: var(--color-muted);
+  margin-top: -24px;
+  margin-bottom: 40px;
+}
+
+/* Experience timeline */
+.experience {
+  padding: 64px 24px;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline__item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 32px;
+  padding: 32px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.timeline__meta {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.timeline__dates {
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.timeline__location {
+  margin: 0;
+}
+
+.timeline__body h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin: 0 0 12px;
+  font-weight: 600;
+}
+
+.timeline__company {
+  color: var(--color-muted);
+  font-weight: 400;
+}
+
+.timeline__body ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--color-muted);
+}
+
+.timeline__body li {
+  margin-bottom: 8px;
+}
+
+.timeline__subheading {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin: 48px 0 0;
+}
+
+.timeline--compact .timeline__body h3 {
+  font-size: 1.05rem;
+}
+
+/* Education */
+.education {
+  padding: 64px 24px;
+}
+
+.education__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.education-card {
+  padding: 28px;
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+}
+
+.education-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin: 0 0 8px;
+}
+
+.education-card__school {
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.education-card__dates {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  margin: 0 0 12px;
+}
+
+.education-card p:last-child {
+  color: var(--color-muted);
+  margin-bottom: 0;
+}
+
+/* Achievements */
+.achievements {
+  padding: 64px 24px;
+}
+
+.achievements__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 48px;
+}
+
+.achievements__grid h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin: 0 0 16px;
+}
+
+.plain-list {
+  list-style: none;
+  margin: 0 0 32px;
+  padding: 0;
+  color: var(--color-muted);
+}
+
+.plain-list li {
+  padding: 10px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.plain-list--inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.plain-list--inline li {
+  border-top: none;
+  padding: 6px 14px;
+  background: var(--color-card);
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.achievements__scores {
+  font-weight: 600;
+  margin: 0;
+}
+
 /* Testimonials */
 .testimonials {
   padding: 64px 24px;
@@ -371,8 +530,13 @@ body {
 /* Responsive */
 @media (max-width: 760px) {
   .about,
-  .case-study {
+  .case-study,
+  .timeline__item {
     grid-template-columns: 1fr;
+  }
+
+  .timeline__meta {
+    margin-bottom: 4px;
   }
 
   .case-study--reverse {
