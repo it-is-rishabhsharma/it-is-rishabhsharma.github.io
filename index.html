@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rishabh Sharma — Manager, Strategy</title>
   <meta name="description" content="Growth & marketing automation professional — paid acquisition, GTM strategy, and AI automation pipelines." />
+  <link rel="canonical" href="https://it-is-rishabhsharma.github.io/" />
+  <meta name="theme-color" content="#14140f" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Rishabh Sharma — Manager, Strategy" />
@@ -21,24 +23,52 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Rishabh Sharma",
+    "jobTitle": "Manager, Strategy",
+    "url": "https://it-is-rishabhsharma.github.io/",
+    "image": "https://it-is-rishabhsharma.github.io/images/profile.png",
+    "email": "mailto:rishabh1999official@gmail.com",
+    "sameAs": [
+      "https://www.linkedin.com/in/itisrishabhsharma",
+      "https://github.com/it-is-rishabhsharma"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Zopper"
+    },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Kedge Business School" },
+      { "@type": "CollegeOrUniversity", "name": "International Management Institute, New Delhi" }
+    ]
+  }
+  </script>
 </head>
 <body>
+  <a href="#top" class="skip-link">Skip to content</a>
   <div class="scroll-progress" id="scrollProgress"></div>
 
   <header class="site-header">
     <nav class="nav container">
       <a href="#top" class="nav__logo">Rishabh Sharma</a>
-      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav__links" id="navLinks">
-        <li><a href="#about" data-nav-link>About</a></li>
-        <li><a href="#work" data-nav-link>Work</a></li>
-        <li><a href="#experience" data-nav-link>Experience</a></li>
-        <li><a href="#testimonials" data-nav-link>Testimonials</a></li>
-        <li><a href="#services" data-nav-link>Services</a></li>
-        <li><a href="#contact" class="nav__cta" data-nav-link>Contact</a></li>
-      </ul>
+      <div class="nav__right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+        <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__links" id="navLinks">
+          <li><a href="#about" data-nav-link>About</a></li>
+          <li><a href="#work" data-nav-link>Work</a></li>
+          <li><a href="#experience" data-nav-link>Experience</a></li>
+          <li><a href="#testimonials" data-nav-link>Testimonials</a></li>
+          <li><a href="#services" data-nav-link>Services</a></li>
+          <li><a href="#contact" class="nav__cta" data-nav-link>Contact</a></li>
+        </ul>
+      </div>
     </nav>
   </header>
 
@@ -75,7 +105,7 @@
     <section id="about" class="about container">
       <p class="section-number reveal">01</p>
       <div class="about__photo reveal">
-        <img src="images/profile.png" alt="Rishabh Sharma" />
+        <img src="images/profile.png" alt="Rishabh Sharma" fetchpriority="high" />
       </div>
       <div class="about__text reveal">
         <h2 class="section-heading">i'm Rishabh Sharma, and <span class="highlight">I like turning chaos into pipelines</span></h2>
@@ -92,8 +122,9 @@
 
       <article class="case-study reveal">
         <div class="case-study__media">
-          <img src="images/project-placeholder-1.jpg" alt="LinkedIn Paid Acquisition Engine" />
-          <!-- PLACEHOLDER: screenshot of dashboards/ad-analysis tool, optional -->
+          <div class="media-placeholder" data-label="LinkedIn Paid Acquisition Engine">
+            <img class="js-fallback-img" src="images/project-placeholder-1.jpg" alt="LinkedIn Paid Acquisition Engine" loading="lazy" decoding="async" />
+          </div>
         </div>
         <div class="case-study__body">
           <h3>LinkedIn Paid Acquisition Engine</h3>
@@ -105,7 +136,9 @@
 
       <article class="case-study case-study--reverse reveal">
         <div class="case-study__media">
-          <img src="images/project-placeholder-2.jpg" alt="AI Marketing Automation Pipeline" />
+          <div class="media-placeholder" data-label="AI Marketing Automation Pipeline">
+            <img class="js-fallback-img" src="images/project-placeholder-2.jpg" alt="AI Marketing Automation Pipeline" loading="lazy" decoding="async" />
+          </div>
         </div>
         <div class="case-study__body">
           <h3>AI Marketing Automation Pipeline</h3>
@@ -117,7 +150,9 @@
 
       <article class="case-study reveal">
         <div class="case-study__media">
-          <img src="images/project-placeholder-3.jpg" alt="AI Market Entry Evaluator" />
+          <div class="media-placeholder" data-label="AI Market Entry Evaluator">
+            <img class="js-fallback-img" src="images/project-placeholder-3.jpg" alt="AI Market Entry Evaluator" loading="lazy" decoding="async" />
+          </div>
         </div>
         <div class="case-study__body">
           <h3>AI Market Entry Evaluator</h3>
@@ -129,7 +164,9 @@
 
       <article class="case-study case-study--reverse reveal">
         <div class="case-study__media">
-          <img src="images/project-placeholder-4.jpg" alt="Sales-Order Process Automation" />
+          <div class="media-placeholder" data-label="Sales-Order Process Automation">
+            <img class="js-fallback-img" src="images/project-placeholder-4.jpg" alt="Sales-Order Process Automation" loading="lazy" decoding="async" />
+          </div>
         </div>
         <div class="case-study__body">
           <h3>Sales-Order Process Automation</h3>
@@ -343,7 +380,7 @@
         <div class="testimonial-card reveal">
           <p class="testimonial-card__quote">"[PLACEHOLDER: testimonial quote]"</p>
           <div class="testimonial-card__author">
-            <img src="images/avatar-placeholder-1.jpg" alt="[NAME]" />
+            <img class="js-fallback-img" src="images/avatar-placeholder-1.jpg" alt="[NAME]" loading="lazy" decoding="async" />
             <div>
               <p class="testimonial-card__name">[NAME]</p>
               <p class="testimonial-card__role">[ROLE, Company]</p>
@@ -353,7 +390,7 @@
         <div class="testimonial-card reveal">
           <p class="testimonial-card__quote">"[PLACEHOLDER: testimonial quote]"</p>
           <div class="testimonial-card__author">
-            <img src="images/avatar-placeholder-2.jpg" alt="[NAME]" />
+            <img class="js-fallback-img" src="images/avatar-placeholder-2.jpg" alt="[NAME]" loading="lazy" decoding="async" />
             <div>
               <p class="testimonial-card__name">[NAME]</p>
               <p class="testimonial-card__role">[ROLE, Company]</p>
@@ -363,7 +400,7 @@
         <div class="testimonial-card reveal">
           <p class="testimonial-card__quote">"[PLACEHOLDER: testimonial quote]"</p>
           <div class="testimonial-card__author">
-            <img src="images/avatar-placeholder-3.jpg" alt="[NAME]" />
+            <img class="js-fallback-img" src="images/avatar-placeholder-3.jpg" alt="[NAME]" loading="lazy" decoding="async" />
             <div>
               <p class="testimonial-card__name">[NAME]</p>
               <p class="testimonial-card__role">[ROLE, Company]</p>
@@ -399,8 +436,12 @@
       <p class="section-number reveal">08</p>
       <h2 class="section-heading reveal">let's <span class="highlight">talk</span></h2>
       <p class="reveal">Open to conversations on growth, GTM strategy, and marketing automation.</p>
-      <a href="mailto:rishabh1999official@gmail.com" class="btn btn--primary reveal">rishabh1999official@gmail.com</a>
+      <div class="contact__actions reveal">
+        <a href="mailto:rishabh1999official@gmail.com" class="btn btn--primary" id="contactEmail">rishabh1999official@gmail.com</a>
+        <button class="copy-btn" id="copyEmailBtn" type="button" aria-label="Copy email address" data-email="rishabh1999official@gmail.com">Copy</button>
+      </div>
       <p class="reveal" style="margin-top: 16px;">+91-7042326206</p>
+      <a href="resume.pdf" class="btn btn--ghost reveal" style="margin-top: 24px;" download>Download Resume</a>
     </section>
   </main>
 
@@ -411,6 +452,8 @@
       <li><a href="https://github.com/it-is-rishabhsharma" target="_blank" rel="noopener">GitHub</a></li>
     </ul>
   </footer>
+
+  <a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">↑</a>
 
   <script src="js/script.js"></script>
 </body>
