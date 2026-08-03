@@ -1,19 +1,24 @@
 const navToggle = document.getElementById("navToggle");
 const navLinks = document.getElementById("navLinks");
+const navBackdrop = document.getElementById("navBackdrop");
 
 function closeMobileMenu() {
   navLinks.classList.remove("is-open");
   navToggle.setAttribute("aria-expanded", "false");
+  navBackdrop.classList.remove("is-visible");
 }
 
 navToggle.addEventListener("click", () => {
   const isOpen = navLinks.classList.toggle("is-open");
   navToggle.setAttribute("aria-expanded", String(isOpen));
+  navBackdrop.classList.toggle("is-visible", isOpen);
   if (isOpen) {
     const firstLink = navLinks.querySelector("a");
     if (firstLink) firstLink.focus();
   }
 });
+
+navBackdrop.addEventListener("click", closeMobileMenu);
 
 navLinks.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", closeMobileMenu);
@@ -62,17 +67,21 @@ const revealObserver = new IntersectionObserver(
 );
 revealTargets.forEach((el) => revealObserver.observe(el));
 
-// Scroll progress bar, back-to-top visibility, and subtle parallax
+// Scroll progress bar, back-to-top visibility, subtle parallax, and scroll-depth accent desaturation
 const scrollProgress = document.getElementById("scrollProgress");
 const backToTop = document.getElementById("backToTop");
 const heroBlob = document.getElementById("heroBlob");
 const aboutPhotoImg = document.querySelector(".about__photo img");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const pointerFine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+let lastScrollPct = 0;
 
 function updateOnScroll() {
   const scrollTop = window.scrollY;
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
   const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  lastScrollPct = pct / 100;
   scrollProgress.style.width = pct + "%";
   backToTop.classList.toggle("is-visible", scrollTop > window.innerHeight * 0.6);
 
@@ -86,6 +95,8 @@ function updateOnScroll() {
       aboutPhotoImg.style.transform = `translateY(${centerOffset * -0.03}px)`;
     }
   }
+
+  updateAccentColor();
 }
 
 let scrollTicking = false;
@@ -97,8 +108,8 @@ window.addEventListener("scroll", () => {
     });
     scrollTicking = true;
   }
+  registerActivity();
 });
-updateOnScroll();
 
 // Active nav-link + side-dot highlighting (scrollspy)
 const navLinkEls = document.querySelectorAll("[data-nav-link]");
@@ -203,6 +214,7 @@ themeToggle.addEventListener("click", () => {
   root.setAttribute("data-theme", next);
   localStorage.setItem("theme", next);
   updateThemeToggleIcon();
+  updateAccentColor();
 });
 
 // Copy-to-clipboard email button
@@ -265,3 +277,271 @@ if (rotatorWord && !prefersReducedMotion) {
 } else if (rotatorWord) {
   rotatorWord.textContent = "GTM Strategy";
 }
+
+// Cursor-following glow inside hovered cards (desktop, pointer:fine only)
+if (pointerFine && !prefersReducedMotion) {
+  document.querySelectorAll(".case-study, .testimonial-card, .education-card, .service-card, .badge-card").forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const mx = ((e.clientX - rect.left) / rect.width) * 100;
+      const my = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty("--mx", mx + "%");
+      card.style.setProperty("--my", my + "%");
+    });
+  });
+}
+
+// Keyboard shortcuts: press "g" then a letter to jump to a section
+(function setupKeyboardShortcuts() {
+  const shortcutMap = { a: "about", w: "work", e: "experience", t: "testimonials", s: "services", c: "contact" };
+  let awaitingSecondKey = false;
+  let resetTimer = null;
+
+  document.addEventListener("keydown", (e) => {
+    const tag = document.activeElement.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA" || e.metaKey || e.ctrlKey || e.altKey) return;
+
+    if (e.key === "g" || e.key === "G") {
+      awaitingSecondKey = true;
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(() => {
+        awaitingSecondKey = false;
+      }, 1500);
+      return;
+    }
+
+    if (awaitingSecondKey) {
+      const targetId = shortcutMap[e.key.toLowerCase()];
+      awaitingSecondKey = false;
+      if (targetId) {
+        const el = document.getElementById(targetId);
+        if (el) el.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth" });
+      }
+    }
+  });
+})();
+
+// Cursor-trail particles within the hero (desktop, pointer:fine only)
+if (pointerFine && !prefersReducedMotion) {
+  const heroEl = document.querySelector(".hero");
+  let lastParticleTime = 0;
+  if (heroEl) {
+    heroEl.addEventListener("mousemove", (e) => {
+      const now = performance.now();
+      if (now - lastParticleTime < 60) return;
+      lastParticleTime = now;
+      const particle = document.createElement("span");
+      particle.className = "cursor-particle";
+      particle.style.left = e.clientX + "px";
+      particle.style.top = e.clientY + "px";
+      document.body.appendChild(particle);
+      setTimeout(() => particle.remove(), 700);
+    });
+  }
+}
+
+// Live "leads auto-routed" counter — playful, illustrative, not real data
+const liveCounterEl = document.getElementById("liveCounterValue");
+if (liveCounterEl) {
+  let liveCount = 0;
+  setInterval(() => {
+    liveCount += Math.floor(Math.random() * 3) + 1;
+    liveCounterEl.textContent = liveCount.toLocaleString();
+  }, 2200);
+}
+
+// Live clock — visitor's-eye view of local time in Noida
+const footerClockEl = document.getElementById("footerClock");
+if (footerClockEl) {
+  function updateFooterClock() {
+    const formatter = new Intl.DateTimeFormat("en-IN", {
+      timeZone: "Asia/Kolkata",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    footerClockEl.textContent = formatter.format(new Date());
+  }
+  updateFooterClock();
+  setInterval(updateFooterClock, 15000);
+}
+
+// Rotating footer tagline
+const footerTaglineEl = document.getElementById("footerTagline");
+if (footerTaglineEl && !prefersReducedMotion) {
+  const taglines = [
+    "i turn ad-spend and messy data into systems that scale themselves.",
+    "still here? that's exactly the kind of retention I try to build into pipelines.",
+    "built with HTML, CSS, and a healthy obsession with automation.",
+    "GTM strategy by day, workflow automation by... also day.",
+  ];
+  let taglineIndex = 0;
+  setInterval(() => {
+    footerTaglineEl.classList.add("is-fading");
+    setTimeout(() => {
+      taglineIndex = (taglineIndex + 1) % taglines.length;
+      footerTaglineEl.textContent = taglines[taglineIndex];
+      footerTaglineEl.classList.remove("is-fading");
+    }, 400);
+  }, 30000);
+}
+
+// Toast system (shared by idle nudge, reading-time nudge, theme nudge)
+const toastEl = document.getElementById("toast");
+let toastQueue = [];
+let toastShowing = false;
+
+function showToast(message, actionLabel, actionFn, duration = 6000) {
+  toastQueue.push({ message, actionLabel, actionFn, duration });
+  processToastQueue();
+}
+
+function processToastQueue() {
+  if (toastShowing || toastQueue.length === 0) return;
+  toastShowing = true;
+  const { message, actionLabel, actionFn, duration } = toastQueue.shift();
+
+  toastEl.innerHTML = "";
+  const text = document.createElement("span");
+  text.textContent = message;
+  toastEl.appendChild(text);
+
+  if (actionLabel && actionFn) {
+    const btn = document.createElement("button");
+    btn.textContent = actionLabel;
+    btn.addEventListener("click", () => {
+      actionFn();
+      hideToast();
+    });
+    toastEl.appendChild(btn);
+  }
+
+  toastEl.classList.add("is-visible");
+  setTimeout(hideToast, duration);
+}
+
+function hideToast() {
+  toastEl.classList.remove("is-visible");
+  toastShowing = false;
+  setTimeout(processToastQueue, 400);
+}
+
+// Idle-detection nudge
+let lastActivity = Date.now();
+let idleNudgeShown = false;
+
+function registerActivity() {
+  lastActivity = Date.now();
+}
+["mousemove", "keydown", "click", "touchstart"].forEach((evt) => {
+  window.addEventListener(evt, registerActivity, { passive: true });
+});
+
+setInterval(() => {
+  if (!idleNudgeShown && Date.now() - lastActivity > 90000) {
+    idleNudgeShown = true;
+    showToast("still there? 👋 no rush — take your time.");
+  }
+}, 10000);
+
+// Reading-time nudge
+setTimeout(() => {
+  showToast("you've been reading for a couple minutes now — thanks for sticking around.");
+}, 120000);
+
+// Evening theme nudge (only if the visitor hasn't set an explicit preference)
+(function maybeSuggestDarkMode() {
+  if (localStorage.getItem("theme")) return;
+  const hour = new Date().getHours();
+  const isEvening = hour >= 20 || hour < 6;
+  if (isEvening && effectiveTheme() === "light") {
+    setTimeout(() => {
+      showToast("looks like it's evening — want to switch to dark mode?", "Switch", () => {
+        root.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+        updateThemeToggleIcon();
+        updateAccentColor();
+      });
+    }, 6000);
+  }
+})();
+
+// Logo click easter egg
+(function setupLogoEasterEgg() {
+  const logo = document.querySelector(".nav__logo");
+  if (!logo) return;
+  let clickCount = 0;
+  let resetTimer = null;
+
+  logo.addEventListener("click", (e) => {
+    clickCount++;
+    clearTimeout(resetTimer);
+    resetTimer = setTimeout(() => (clickCount = 0), 2000);
+
+    if (clickCount >= 5) {
+      clickCount = 0;
+      if (!prefersReducedMotion) {
+        for (let i = 0; i < 24; i++) {
+          const confetti = document.createElement("span");
+          confetti.className = "cursor-particle cursor-particle--confetti";
+          confetti.style.left = e.clientX + "px";
+          confetti.style.top = e.clientY + "px";
+          confetti.style.background = i % 2 === 0 ? "var(--color-accent)" : "var(--color-accent-2)";
+          document.body.appendChild(confetti);
+
+          const angle = Math.random() * Math.PI * 2;
+          const distance = 60 + Math.random() * 80;
+          requestAnimationFrame(() => {
+            confetti.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0.3)`;
+            confetti.style.opacity = "0";
+          });
+          setTimeout(() => confetti.remove(), 750);
+        }
+      }
+      showToast("okay okay, you found the easter egg. 🎉");
+    }
+  });
+})();
+
+// Palette toggle (default orange-forward vs. teal-forward)
+const paletteToggle = document.getElementById("paletteToggle");
+const PALETTES = {
+  default: {
+    light: { accent: [16, 100, 56], accent2: [180, 45, 33] },
+    dark: { accent: [16, 100, 56], accent2: [178, 45, 53] },
+  },
+  teal: {
+    light: { accent: [180, 45, 33], accent2: [16, 100, 56] },
+    dark: { accent: [178, 45, 53], accent2: [16, 100, 60] },
+  },
+};
+
+function getPalette() {
+  return localStorage.getItem("palette") === "teal" ? "teal" : "default";
+}
+
+function updateAccentColor() {
+  const palette = getPalette();
+  const theme = effectiveTheme();
+  const base = PALETTES[palette][theme];
+
+  const hour = new Date().getHours();
+  const hueOffset = Math.sin((hour / 24) * Math.PI * 2) * 10;
+  const satMultiplier = 1 - lastScrollPct * 0.22;
+
+  const [h1, s1, l1] = base.accent;
+  root.style.setProperty("--color-accent", `hsl(${Math.round(h1 + hueOffset)}, ${Math.round(s1 * satMultiplier)}%, ${l1}%)`);
+
+  const [h2, s2, l2] = base.accent2;
+  root.style.setProperty("--color-accent-2", `hsl(${h2}, ${s2}%, ${l2}%)`);
+}
+
+if (paletteToggle) {
+  paletteToggle.addEventListener("click", () => {
+    const next = getPalette() === "teal" ? "default" : "teal";
+    localStorage.setItem("palette", next);
+    updateAccentColor();
+  });
+}
+
+updateAccentColor();
+updateOnScroll();

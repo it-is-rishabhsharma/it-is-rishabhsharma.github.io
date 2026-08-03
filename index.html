@@ -52,6 +52,8 @@
   <a href="#top" class="skip-link">Skip to content</a>
   <div class="brand-stripe" aria-hidden="true"></div>
   <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="nav-backdrop" id="navBackdrop"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <nav class="side-nav" aria-label="Section shortcuts">
     <a href="#about" data-side-dot data-nav-link aria-label="About"><span></span></a>
@@ -66,17 +68,18 @@
     <nav class="nav container">
       <a href="#top" class="nav__logo">Rishabh Sharma</a>
       <div class="nav__right">
+        <button class="palette-toggle" id="paletteToggle" aria-label="Switch color palette">🎨</button>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
         <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
         <ul class="nav__links" id="navLinks">
-          <li><a href="#about" data-nav-link>About</a></li>
-          <li><a href="#work" data-nav-link>Work</a></li>
-          <li><a href="#experience" data-nav-link>Experience</a></li>
-          <li><a href="#testimonials" data-nav-link>Testimonials</a></li>
-          <li><a href="#services" data-nav-link>Services</a></li>
-          <li><a href="#contact" class="nav__cta" data-nav-link>Contact</a></li>
+          <li><a href="#about" data-nav-link data-preview="Who I am, in short">About</a></li>
+          <li><a href="#work" data-nav-link data-preview="4 flagship case studies">Work</a></li>
+          <li><a href="#experience" data-nav-link data-preview="Full role-by-role history">Experience</a></li>
+          <li><a href="#testimonials" data-nav-link data-preview="What people say">Testimonials</a></li>
+          <li><a href="#services" data-nav-link data-preview="How we could work together">Services</a></li>
+          <li><a href="#contact" class="nav__cta" data-nav-link data-preview="Let's talk">Contact</a></li>
         </ul>
       </div>
     </nav>
@@ -123,6 +126,8 @@
           <p class="stat-tile__label">Saved annually through marketing automation</p>
         </div>
       </div>
+
+      <p class="live-counter reveal">⚡ <span id="liveCounterValue">0</span> leads auto-routed while you've been reading <span class="live-counter__note">(a little nod to what I actually build — not live data)</span></p>
     </section>
 
     <!-- ABOUT -->
@@ -159,8 +164,8 @@
           <span class="case-study__index">01</span>
           <h3>LinkedIn Paid Acquisition Engine</h3>
           <div class="case-study__tags">
-            <span class="tag">Paid Media</span>
-            <span class="tag">A/B Testing</span>
+            <span class="tag tag--paid-media">Paid Media</span>
+            <span class="tag tag--testing">A/B Testing</span>
           </div>
           <p class="case-study__summary">Scaled a ~₹4 Cr/year LinkedIn ad engine to 8–15x ROAS</p>
           <p>Led 24 campaigns managing ~₹4 Crores in ad-spend — sharp audience targeting, multivariate A/B testing, deep competitor ad-analysis, and disciplined budget scaling. Also built an autonomous cost-per-lead-vs-frequency tool that turns raw ad data into daily actions (refresh creative, pause spend, reallocate budget).</p>
@@ -178,8 +183,8 @@
           <span class="case-study__index">02</span>
           <h3>AI Marketing Automation Pipeline</h3>
           <div class="case-study__tags">
-            <span class="tag">Automation</span>
-            <span class="tag">AI</span>
+            <span class="tag tag--automation">Automation</span>
+            <span class="tag tag--ai">AI</span>
           </div>
           <p class="case-study__summary">Built the automation stack behind 3,500+ leads/month</p>
           <p>Automated marketing operations end to end — lead capture, qualification, prioritization, distribution, and AI content vetting and generation — using Zapier, N8N, Claude, Comet, and Perplexity.</p>
@@ -197,8 +202,8 @@
           <span class="case-study__index">03</span>
           <h3>AI Market Entry Evaluator</h3>
           <div class="case-study__tags">
-            <span class="tag">AI</span>
-            <span class="tag">GTM Strategy</span>
+            <span class="tag tag--ai">AI</span>
+            <span class="tag tag--gtm">GTM Strategy</span>
           </div>
           <p class="case-study__summary">A single-prompt engine for board-ready GTM strategy</p>
           <p>Built an AI tool that runs live multi-source research — market sizing, competitive and value-chain analysis, market-gap analysis — and outputs a three-tier product architecture, field-research plan, and an honest Go / No-Go call.</p>
@@ -216,8 +221,8 @@
           <span class="case-study__index">04</span>
           <h3>Sales-Order Process Automation</h3>
           <div class="case-study__tags">
-            <span class="tag">Automation</span>
-            <span class="tag">Ops</span>
+            <span class="tag tag--automation">Automation</span>
+            <span class="tag tag--ops">Ops</span>
           </div>
           <p class="case-study__summary">Removed manual work from an entire order pipeline</p>
           <p>At Trivitron Healthcare, automated the end-to-end sales-order process while driving strategic business development with global C-suite stakeholders.</p>
@@ -537,8 +542,9 @@
   <footer class="site-footer">
     <div class="container site-footer__grid">
       <div class="site-footer__brand">
-        <p class="site-footer__tagline">i turn ad-spend and messy data into systems that scale themselves.</p>
+        <p class="site-footer__tagline" id="footerTagline">i turn ad-spend and messy data into systems that scale themselves.</p>
         <p>&copy; <span id="year"></span> Rishabh Sharma. Built with HTML, CSS &amp; JS, hosted on Netlify.</p>
+        <p class="footer-clock">🕐 <span id="footerClock">--:--</span> right now in Noida</p>
       </div>
       <ul class="site-footer__links">
         <li><a href="#about" data-nav-link>About</a></li>
@@ -564,6 +570,11 @@
   </footer>
 
   <a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">↑</a>
+
+  <div class="mobile-cta-bar">
+    <a href="#contact" class="btn btn--primary">Get in touch</a>
+    <a href="resume.pdf" class="btn btn--ghost" download>Resume</a>
+  </div>
 
   <script src="js/script.js"></script>
 </body>
