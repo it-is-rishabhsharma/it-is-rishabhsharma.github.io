@@ -62,9 +62,12 @@ const revealObserver = new IntersectionObserver(
 );
 revealTargets.forEach((el) => revealObserver.observe(el));
 
-// Scroll progress bar + back-to-top visibility
+// Scroll progress bar, back-to-top visibility, and subtle parallax
 const scrollProgress = document.getElementById("scrollProgress");
 const backToTop = document.getElementById("backToTop");
+const heroBlob = document.getElementById("heroBlob");
+const aboutPhotoImg = document.querySelector(".about__photo img");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function updateOnScroll() {
   const scrollTop = window.scrollY;
@@ -72,6 +75,17 @@ function updateOnScroll() {
   const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
   scrollProgress.style.width = pct + "%";
   backToTop.classList.toggle("is-visible", scrollTop > window.innerHeight * 0.6);
+
+  if (!prefersReducedMotion) {
+    if (heroBlob) {
+      heroBlob.style.transform = `translateY(${scrollTop * 0.15}px)`;
+    }
+    if (aboutPhotoImg) {
+      const rect = aboutPhotoImg.getBoundingClientRect();
+      const centerOffset = rect.top - window.innerHeight / 2;
+      aboutPhotoImg.style.transform = `translateY(${centerOffset * -0.03}px)`;
+    }
+  }
 }
 
 let scrollTicking = false;
@@ -86,23 +100,26 @@ window.addEventListener("scroll", () => {
 });
 updateOnScroll();
 
-// Active nav-link highlighting (scrollspy)
+// Active nav-link + side-dot highlighting (scrollspy)
 const navLinkEls = document.querySelectorAll("[data-nav-link]");
 const sectionByLink = new Map();
 navLinkEls.forEach((link) => {
   const id = link.getAttribute("href").slice(1);
   const section = document.getElementById(id);
-  if (section) sectionByLink.set(section, link);
+  if (section) {
+    if (!sectionByLink.has(section)) sectionByLink.set(section, []);
+    sectionByLink.get(section).push(link);
+  }
 });
 
 const spyObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
-      const link = sectionByLink.get(entry.target);
-      if (!link) return;
+      const links = sectionByLink.get(entry.target);
+      if (!links) return;
       if (entry.isIntersecting) {
         navLinkEls.forEach((l) => l.classList.remove("is-active"));
-        link.classList.add("is-active");
+        links.forEach((l) => l.classList.add("is-active"));
       }
     });
   },
@@ -213,4 +230,38 @@ if (copyEmailBtn) {
       copyEmailBtn.classList.remove("is-copied");
     }, 2000);
   });
+}
+
+// Hero rotating-word typewriter effect
+const rotatorWord = document.getElementById("rotatorWord");
+if (rotatorWord && !prefersReducedMotion) {
+  const phrases = ["GTM Strategy", "Paid Acquisition", "Marketing Automation", "Revenue Operations"];
+  let phraseIndex = 0;
+  let charIndex = phrases[0].length;
+  let deleting = false;
+
+  function typeTick() {
+    const current = phrases[phraseIndex];
+    if (!deleting) {
+      charIndex++;
+      if (charIndex > current.length) {
+        deleting = true;
+        setTimeout(typeTick, 1600);
+        return;
+      }
+    } else {
+      charIndex--;
+      if (charIndex < 0) {
+        deleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        charIndex = 0;
+      }
+    }
+    rotatorWord.textContent = phrases[phraseIndex].slice(0, charIndex) || phrases[phraseIndex].slice(0, 1);
+    setTimeout(typeTick, deleting ? 40 : 70);
+  }
+
+  setTimeout(typeTick, 1600);
+} else if (rotatorWord) {
+  rotatorWord.textContent = "GTM Strategy";
 }

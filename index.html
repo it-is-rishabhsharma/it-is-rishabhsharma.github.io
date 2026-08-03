@@ -21,7 +21,7 @@
   <link rel="icon" type="image/png" href="images/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&family=Fraunces:ital,wght@1,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 
   <script type="application/ld+json">
@@ -50,7 +50,17 @@
 </head>
 <body>
   <a href="#top" class="skip-link">Skip to content</a>
+  <div class="brand-stripe" aria-hidden="true"></div>
   <div class="scroll-progress" id="scrollProgress"></div>
+
+  <nav class="side-nav" aria-label="Section shortcuts">
+    <a href="#about" data-side-dot data-nav-link aria-label="About"><span></span></a>
+    <a href="#work" data-side-dot data-nav-link aria-label="Work"><span></span></a>
+    <a href="#experience" data-side-dot data-nav-link aria-label="Experience"><span></span></a>
+    <a href="#testimonials" data-side-dot data-nav-link aria-label="Testimonials"><span></span></a>
+    <a href="#services" data-side-dot data-nav-link aria-label="Services"><span></span></a>
+    <a href="#contact" data-side-dot data-nav-link aria-label="Contact"><span></span></a>
+  </nav>
 
   <header class="site-header">
     <nav class="nav container">
@@ -75,11 +85,25 @@
   <main id="top">
     <!-- HERO -->
     <section class="hero container">
+      <div class="hero__blob" id="heroBlob" aria-hidden="true"></div>
+
       <p class="hero__eyebrow reveal">Manager, Strategy — Founder's Office, Zopper</p>
       <h1 class="hero__headline reveal">
         i turn ad-spend, messy data, and manual busywork into <span class="highlight">systems that scale themselves</span>
       </h1>
       <p class="hero__subtext reveal">Growth & marketing automation professional running paid acquisition at 8–15x ROAS and building AI pipelines that save 20+ hours a week — currently in an insurtech's Founder's Office.</p>
+
+      <p class="hero__rotator reveal">
+        <span class="hero__rotator-label">Currently deep in:</span>
+        <span class="hero__rotator-word" id="rotatorWord">GTM Strategy</span>
+      </p>
+
+      <p class="quick-facts reveal">
+        <span>📍 Noida, India</span>
+        <span>Currently: full-time @ Zopper</span>
+        <span>Open to: advisory chats</span>
+      </p>
+
       <div class="hero__cta-row reveal">
         <a href="#work" class="btn btn--primary">See my work</a>
         <a href="#contact" class="btn btn--ghost">Get in touch</a>
@@ -110,15 +134,20 @@
       <div class="about__text reveal">
         <h2 class="section-heading">i'm Rishabh Sharma, and <span class="highlight">I like turning chaos into pipelines</span></h2>
         <p>Manager, Strategy at the Founder's Office of an insurtech company — 4 years across performance & product marketing, GTM strategy, marketing automation, key-account management, and revenue operations. I run paid acquisition at 8–15x ROAS (~3,500 leads/month), and have built AI automation workflows saving ₹19L+ a year.</p>
+        <blockquote class="pull-quote">"give me a messy process and 15 minutes of context — I'll hand you back a pipeline that runs itself."</blockquote>
         <p>Earlier, I drove ₹30+ Crore ARR out of Trivitron's CEO Office. Dual MBA (France & India) in Marketing, Strategy & Finance, and a national winner across multiple international competitions.</p>
       </div>
     </section>
+
+    <div class="section-divider" aria-hidden="true">
+      <svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,20 C150,40 350,0 600,20 C850,40 1050,0 1200,20" /></svg>
+    </div>
 
     <!-- CASE STUDIES / WORK -->
     <section id="work" class="work container">
       <p class="section-number reveal">02</p>
       <h2 class="section-heading reveal">i've been busy building <span class="highlight">things that matter</span></h2>
-      <p class="section-lead reveal">A few selected highlights — the full role-by-role history is below.</p>
+      <p class="section-lead reveal">A few selected highlights, the ones I'd talk your ear off about — the full role-by-role history is below.</p>
 
       <article class="case-study reveal">
         <div class="case-study__media">
@@ -127,7 +156,12 @@
           </div>
         </div>
         <div class="case-study__body">
+          <span class="case-study__index">01</span>
           <h3>LinkedIn Paid Acquisition Engine</h3>
+          <div class="case-study__tags">
+            <span class="tag">Paid Media</span>
+            <span class="tag">A/B Testing</span>
+          </div>
           <p class="case-study__summary">Scaled a ~₹4 Cr/year LinkedIn ad engine to 8–15x ROAS</p>
           <p>Led 24 campaigns managing ~₹4 Crores in ad-spend — sharp audience targeting, multivariate A/B testing, deep competitor ad-analysis, and disciplined budget scaling. Also built an autonomous cost-per-lead-vs-frequency tool that turns raw ad data into daily actions (refresh creative, pause spend, reallocate budget).</p>
           <p class="case-study__outcome"><strong>Outcome:</strong> 8–15x ROAS, ~3,250 qualified leads at ~$0.75 cost-per-lead, and a 2–2.5% CTR — 4–5x the LinkedIn benchmark.</p>
@@ -141,7 +175,12 @@
           </div>
         </div>
         <div class="case-study__body">
+          <span class="case-study__index">02</span>
           <h3>AI Marketing Automation Pipeline</h3>
+          <div class="case-study__tags">
+            <span class="tag">Automation</span>
+            <span class="tag">AI</span>
+          </div>
           <p class="case-study__summary">Built the automation stack behind 3,500+ leads/month</p>
           <p>Automated marketing operations end to end — lead capture, qualification, prioritization, distribution, and AI content vetting and generation — using Zapier, N8N, Claude, Comet, and Perplexity.</p>
           <p class="case-study__outcome"><strong>Outcome:</strong> Sub-15-second lead routing, sub-60-second content vetting, ₹19L+ in annual cost savings, and 21+ hours/week freed across the team.</p>
@@ -155,7 +194,12 @@
           </div>
         </div>
         <div class="case-study__body">
+          <span class="case-study__index">03</span>
           <h3>AI Market Entry Evaluator</h3>
+          <div class="case-study__tags">
+            <span class="tag">AI</span>
+            <span class="tag">GTM Strategy</span>
+          </div>
           <p class="case-study__summary">A single-prompt engine for board-ready GTM strategy</p>
           <p>Built an AI tool that runs live multi-source research — market sizing, competitive and value-chain analysis, market-gap analysis — and outputs a three-tier product architecture, field-research plan, and an honest Go / No-Go call.</p>
           <p class="case-study__outcome"><strong>Outcome:</strong> Used to evaluate 10+ new business categories, from luxury watches to premium eyewear.</p>
@@ -169,7 +213,12 @@
           </div>
         </div>
         <div class="case-study__body">
+          <span class="case-study__index">04</span>
           <h3>Sales-Order Process Automation</h3>
+          <div class="case-study__tags">
+            <span class="tag">Automation</span>
+            <span class="tag">Ops</span>
+          </div>
           <p class="case-study__summary">Removed manual work from an entire order pipeline</p>
           <p>At Trivitron Healthcare, automated the end-to-end sales-order process while driving strategic business development with global C-suite stakeholders.</p>
           <p class="case-study__outcome"><strong>Outcome:</strong> ~99% improvement in process efficiency, contributing to ₹30+ Cr in annual recurring revenue.</p>
@@ -178,6 +227,10 @@
 
       <!-- Duplicate the <article class="case-study"> block above for each additional project. Add real screenshots to images/ when ready — the img src attributes above already point to project-placeholder-1 through -4.jpg -->
     </section>
+
+    <div class="section-divider section-divider--flip" aria-hidden="true">
+      <svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,20 C150,40 350,0 600,20 C850,40 1050,0 1200,20" /></svg>
+    </div>
 
     <!-- EXPERIENCE -->
     <section id="experience" class="experience container">
@@ -319,17 +372,20 @@
       <h2 class="section-heading reveal">and the <span class="highlight">education</span> behind it</h2>
       <div class="education__grid">
         <div class="education-card reveal">
+          <span class="education-card__crest">KBS</span>
           <h3>MBA, Marketing, Strategy & Finance</h3>
           <p class="education-card__school">Kedge Business School, France</p>
           <p class="education-card__dates">Dec '24 – Apr '24 · Marseille, France</p>
           <p>Selected among the top 2 students for a 4-month international immersion program, travelling across 12+ European countries.</p>
         </div>
         <div class="education-card reveal">
+          <span class="education-card__crest">IMI</span>
           <h3>MBA, Marketing, Strategy & Finance</h3>
           <p class="education-card__school">International Management Institute, New Delhi</p>
           <p class="education-card__dates">Aug '22 – Dec '24 · Delhi, India</p>
         </div>
         <div class="education-card reveal">
+          <span class="education-card__crest">MSI</span>
           <h3>Bachelor of Computer Applications (BCA)</h3>
           <p class="education-card__school">Maharaja Surajmal Institute, GGSIPU University</p>
           <p class="education-card__dates">Aug '17 – Sep '20</p>
@@ -342,20 +398,47 @@
     <section id="achievements" class="achievements container">
       <p class="section-number reveal">05</p>
       <h2 class="section-heading reveal">a few <span class="highlight">wins along the way</span></h2>
-      <div class="achievements__grid">
-        <div class="reveal">
-          <h3>Competitions & recognition</h3>
-          <ul class="plain-list">
-            <li><strong>National Winner</strong> — Gilbarco Veeder Root Innovathon 2022 (₹1,00,000 prize, 2,000+ participants)</li>
-            <li><strong>National Winner</strong> — CFA Institute Ethics Challenge 2023 (₹45,000 prize)</li>
-            <li><strong>Rank 3 of 460</strong> — IMI Student of the Year Annual Competition</li>
-            <li><strong>National Finalist</strong> — Masters' Union Start-up Weekend (₹2,50,000 scholarship, pitched to a Cummins VC)</li>
-            <li><strong>National Finalist</strong> — Finertia 6.0 (presented to CFOs of Air India & Edelweiss)</li>
-            <li><strong>National Finalist</strong> — IIM Nagpur Finquest 5.0 (equity valuation)</li>
-            <li>2x Campus Winner · Best Volunteer, National Alumni Meet 2022</li>
-          </ul>
-          <p class="achievements__scores">CAT: 92.44 percentile &nbsp;·&nbsp; NMAT: 241/360</p>
+
+      <div class="badge-grid">
+        <div class="badge-card reveal">
+          <span class="badge-card__icon">🏆</span>
+          <p class="badge-card__title">National Winner</p>
+          <p class="badge-card__desc">Gilbarco Veeder Root Innovathon 2022 — ₹1,00,000 prize, 2,000+ participants</p>
         </div>
+        <div class="badge-card reveal">
+          <span class="badge-card__icon">🏆</span>
+          <p class="badge-card__title">National Winner</p>
+          <p class="badge-card__desc">CFA Institute Ethics Challenge 2023 — ₹45,000 prize</p>
+        </div>
+        <div class="badge-card reveal">
+          <span class="badge-card__icon">🥉</span>
+          <p class="badge-card__title">Rank 3 of 460</p>
+          <p class="badge-card__desc">IMI Student of the Year Annual Competition</p>
+        </div>
+        <div class="badge-card reveal">
+          <span class="badge-card__icon">🎯</span>
+          <p class="badge-card__title">National Finalist</p>
+          <p class="badge-card__desc">Masters' Union Start-up Weekend — ₹2,50,000 scholarship, pitched to a Cummins VC</p>
+        </div>
+        <div class="badge-card reveal">
+          <span class="badge-card__icon">🎯</span>
+          <p class="badge-card__title">National Finalist</p>
+          <p class="badge-card__desc">Finertia 6.0 — presented to CFOs of Air India & Edelweiss</p>
+        </div>
+        <div class="badge-card reveal">
+          <span class="badge-card__icon">🎯</span>
+          <p class="badge-card__title">National Finalist</p>
+          <p class="badge-card__desc">IIM Nagpur Finquest 5.0 — equity valuation</p>
+        </div>
+        <div class="badge-card reveal">
+          <span class="badge-card__icon">🎖️</span>
+          <p class="badge-card__title">2x Campus Winner</p>
+          <p class="badge-card__desc">Plus Best Volunteer, National Alumni Meet 2022</p>
+        </div>
+      </div>
+      <p class="achievements__scores reveal">CAT: 92.44 percentile &nbsp;·&nbsp; NMAT: 241/360</p>
+
+      <div class="achievements__grid achievements__grid--certs">
         <div class="reveal">
           <h3>Certifications</h3>
           <ul class="plain-list">
@@ -364,6 +447,8 @@
             <li>BCG Strategy Consulting Virtual Program</li>
             <li>Product Management</li>
           </ul>
+        </div>
+        <div class="reveal">
           <h3>Technical skills</h3>
           <ul class="plain-list plain-list--inline">
             <li>SQL</li><li>Power BI</li><li>Tableau</li><li>Zapier</li><li>N8N</li><li>Microsoft Office</li>
@@ -371,6 +456,10 @@
         </div>
       </div>
     </section>
+
+    <div class="section-divider" aria-hidden="true">
+      <svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,20 C150,40 350,0 600,20 C850,40 1050,0 1200,20" /></svg>
+    </div>
 
     <!-- TESTIMONIALS -->
     <section id="testimonials" class="testimonials container">
@@ -445,12 +534,33 @@
     </section>
   </main>
 
-  <footer class="site-footer container">
-    <p>&copy; <span id="year"></span> Rishabh Sharma. Built with HTML, CSS &amp; JS, hosted on Netlify.</p>
-    <ul class="social-links">
-      <li><a href="https://www.linkedin.com/in/itisrishabhsharma" target="_blank" rel="noopener">LinkedIn</a></li>
-      <li><a href="https://github.com/it-is-rishabhsharma" target="_blank" rel="noopener">GitHub</a></li>
-    </ul>
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <div class="site-footer__brand">
+        <p class="site-footer__tagline">i turn ad-spend and messy data into systems that scale themselves.</p>
+        <p>&copy; <span id="year"></span> Rishabh Sharma. Built with HTML, CSS &amp; JS, hosted on Netlify.</p>
+      </div>
+      <ul class="site-footer__links">
+        <li><a href="#about" data-nav-link>About</a></li>
+        <li><a href="#work" data-nav-link>Work</a></li>
+        <li><a href="#experience" data-nav-link>Experience</a></li>
+        <li><a href="#contact" data-nav-link>Contact</a></li>
+      </ul>
+      <ul class="social-links">
+        <li>
+          <a href="https://www.linkedin.com/in/itisrishabhsharma" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.44-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/it-is-rishabhsharma" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-1.05-.01-1.9-2.78.62-3.37-1.19-3.37-1.19-.45-1.18-1.11-1.49-1.11-1.49-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.55 2.34 1.1 2.91.84.09-.66.34-1.1.62-1.35-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.4 9.4 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+            <span>GitHub</span>
+          </a>
+        </li>
+      </ul>
+    </div>
   </footer>
 
   <a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">↑</a>
