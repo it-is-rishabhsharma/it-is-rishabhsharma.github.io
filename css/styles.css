@@ -61,6 +61,8 @@
 html {
   scroll-behavior: smooth;
   background: var(--color-bg);
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -72,6 +74,8 @@ body {
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.3s ease, color 0.3s ease;
   position: relative;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Subtle grain texture overlay across the whole page */
@@ -1654,6 +1658,12 @@ button:focus-visible {
     gap: 28px;
   }
 
+  /* Decorative offset frames bleed past the viewport edge on narrow screens — disable on mobile */
+  .about__photo::before,
+  .case-study__media::before {
+    display: none;
+  }
+
   /* Bigger, thumb-friendly tap targets */
   .theme-toggle,
   .palette-toggle {
@@ -1712,6 +1722,16 @@ button:focus-visible {
   .testimonial-card {
     flex: 0 0 85%;
     scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Force single-column below the point where minmax() minimums would overflow */
+  .education__grid,
+  .achievements__grid,
+  .services__grid,
+  .badge-grid {
+    grid-template-columns: 1fr;
   }
 }
 
