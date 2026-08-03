@@ -627,6 +627,9 @@ button:focus-visible {
 /* Media placeholder: shows a label until the real image loads; hides cleanly on 404 */
 .media-placeholder {
   position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
   border-radius: 16px;
   overflow: hidden;
   background: linear-gradient(135deg, var(--color-card), var(--color-border));
@@ -655,6 +658,7 @@ button:focus-visible {
 
 .case-study__media {
   position: relative;
+  aspect-ratio: 4 / 3;
 }
 
 .case-study__media::before {
@@ -674,6 +678,7 @@ button:focus-visible {
 
 .case-study__media img {
   width: 100%;
+  height: 100%;
   border-radius: 16px;
   background: var(--color-card);
   aspect-ratio: 4 / 3;
