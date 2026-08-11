@@ -1165,11 +1165,33 @@ button:focus-visible {
   display: block;
 }
 
-/* Back to top */
-.back-to-top {
+/* WhatsApp button — fixed bottom-right, always visible, persists through scroll */
+.whatsapp-btn {
   position: fixed;
   right: 24px;
   bottom: 24px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease;
+  z-index: 65;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.08);
+}
+
+/* Back to top */
+.back-to-top {
+  position: fixed;
+  right: 28px;
+  bottom: 88px;
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -1519,8 +1541,15 @@ button:focus-visible {
     padding-bottom: 72px;
   }
 
-  .back-to-top {
+  .whatsapp-btn {
     bottom: 84px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .back-to-top {
+    bottom: 144px;
   }
 
   .toast {
@@ -1611,8 +1640,8 @@ button:focus-visible {
   }
 
   .back-to-top {
-    right: 16px;
-    bottom: 16px;
+    right: 18px;
+    bottom: 144px;
   }
 
   .site-footer__grid {
@@ -1727,6 +1756,7 @@ button:focus-visible {
   .brand-stripe,
   .side-nav,
   .back-to-top,
+  .whatsapp-btn,
   .skip-link,
   .theme-toggle,
   .palette-toggle,
