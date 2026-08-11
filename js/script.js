@@ -537,3 +537,67 @@ if (paletteToggle) {
 
 updateAccentColor();
 updateOnScroll();
+
+// Auto-advancing carousels (stats, testimonials, services) — mainly for mobile,
+// where these become horizontally swipeable and a visitor might not realize there's
+// more content off-screen. No-ops harmlessly on desktop, where these aren't scrollable.
+function setupAutoCarousel(containerSelector, itemSelector, intervalMs) {
+  const container = document.querySelector(containerSelector);
+  if (!container || prefersReducedMotion) return;
+
+  let autoTimer = null;
+  let resumeTimer = null;
+  let currentIndex = 0;
+
+  function getItems() {
+    return Array.from(container.querySelectorAll(itemSelector));
+  }
+
+  function isScrollable() {
+    return container.scrollWidth > container.clientWidth + 4;
+  }
+
+  function scrollToIndex(index) {
+    const items = getItems();
+    if (items.length === 0) return;
+    currentIndex = ((index % items.length) + items.length) % items.length;
+    const item = items[currentIndex];
+    const containerRect = container.getBoundingClientRect();
+    const itemRect = item.getBoundingClientRect();
+    const targetScrollLeft = container.scrollLeft + (itemRect.left - containerRect.left);
+    container.scrollTo({ left: targetScrollLeft, behavior: "smooth" });
+  }
+
+  function advance() {
+    if (!isScrollable()) return;
+    const items = getItems();
+    const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 4;
+    scrollToIndex(isAtEnd ? 0 : currentIndex + 1);
+  }
+
+  function startAuto() {
+    stopAuto();
+    autoTimer = setInterval(advance, intervalMs);
+  }
+
+  function stopAuto() {
+    if (autoTimer) clearInterval(autoTimer);
+    autoTimer = null;
+  }
+
+  function pauseThenResume() {
+    stopAuto();
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(startAuto, intervalMs * 1.5);
+  }
+
+  container.addEventListener("touchstart", pauseThenResume, { passive: true });
+  container.addEventListener("mousedown", pauseThenResume);
+  container.addEventListener("wheel", pauseThenResume, { passive: true });
+
+  startAuto();
+}
+
+setupAutoCarousel(".stats", ".stat-tile", 3000);
+setupAutoCarousel(".testimonials__grid", ".testimonial-card", 4500);
+setupAutoCarousel(".services__grid", ".service-card", 4500);

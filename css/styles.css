@@ -1713,13 +1713,27 @@ button:focus-visible {
     flex: 0 0 85%;
     scroll-snap-align: start;
   }
+
+  /* Services as a swipeable horizontal row */
+  .services__grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .service-card {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+  }
 }
 
 @media (max-width: 480px) {
   /* Force single-column below the point where minmax() minimums would overflow */
   .education__grid,
   .achievements__grid,
-  .services__grid,
   .badge-grid {
     grid-template-columns: 1fr;
   }
