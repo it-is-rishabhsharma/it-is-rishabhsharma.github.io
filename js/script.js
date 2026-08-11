@@ -50,8 +50,6 @@ navLinks.addEventListener("keydown", (e) => {
   }
 });
 
-document.getElementById("year").textContent = new Date().getFullYear();
-
 // Scroll-reveal: fade/slide elements in as they enter the viewport
 const revealTargets = document.querySelectorAll(".reveal");
 const revealObserver = new IntersectionObserver(
@@ -217,16 +215,15 @@ themeToggle.addEventListener("click", () => {
   updateAccentColor();
 });
 
-// Copy-to-clipboard email button
-const copyEmailBtn = document.getElementById("copyEmailBtn");
-if (copyEmailBtn) {
-  copyEmailBtn.addEventListener("click", async () => {
-    const email = copyEmailBtn.getAttribute("data-email");
+// Copy-to-clipboard buttons (contact email + phone)
+document.querySelectorAll(".icon-copy-btn").forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    const value = btn.getAttribute("data-copy");
     try {
-      await navigator.clipboard.writeText(email);
+      await navigator.clipboard.writeText(value);
     } catch (err) {
       const textarea = document.createElement("textarea");
-      textarea.value = email;
+      textarea.value = value;
       textarea.style.position = "fixed";
       textarea.style.opacity = "0";
       document.body.appendChild(textarea);
@@ -234,15 +231,10 @@ if (copyEmailBtn) {
       document.execCommand("copy");
       document.body.removeChild(textarea);
     }
-    const originalLabel = copyEmailBtn.textContent;
-    copyEmailBtn.textContent = "Copied!";
-    copyEmailBtn.classList.add("is-copied");
-    setTimeout(() => {
-      copyEmailBtn.textContent = originalLabel;
-      copyEmailBtn.classList.remove("is-copied");
-    }, 2000);
+    btn.classList.add("is-copied");
+    setTimeout(() => btn.classList.remove("is-copied"), 2000);
   });
-}
+});
 
 // Hero rotating-word typewriter effect
 const rotatorWord = document.getElementById("rotatorWord");

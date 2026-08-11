@@ -907,6 +907,8 @@ button:focus-visible {
 }
 
 .education-card {
+  position: relative;
+  overflow: hidden;
   padding: 28px;
   border-radius: 16px;
   border: 1px solid var(--color-border);
@@ -970,6 +972,8 @@ button:focus-visible {
 }
 
 .badge-card {
+  position: relative;
+  overflow: hidden;
   padding: 24px;
   border-radius: 16px;
   border: 1px solid var(--color-border);
@@ -1148,6 +1152,8 @@ button:focus-visible {
 }
 
 .service-card {
+  position: relative;
+  overflow: hidden;
   padding: 28px;
   border-radius: 16px;
   border: 1px solid var(--color-border);
@@ -1182,34 +1188,63 @@ button:focus-visible {
   margin-bottom: var(--space-sm);
 }
 
-.contact__actions {
+.contact__row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
 }
 
-.copy-btn {
+.contact__value {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  word-break: break-word;
+}
+
+.contact__value:hover {
+  color: var(--color-accent);
+}
+
+.icon-copy-btn {
   background: transparent;
   border: 1.5px solid var(--color-border);
   color: var(--color-text);
-  padding: 12px 20px;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.95rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-.copy-btn:hover {
+.icon-copy-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: scale(1.05);
+}
+
+.icon-copy-btn .icon-check {
+  display: none;
+}
+
+.icon-copy-btn.is-copied {
   border-color: var(--color-accent);
   color: var(--color-accent);
 }
 
-.copy-btn.is-copied {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+.icon-copy-btn.is-copied .icon-copy {
+  display: none;
+}
+
+.icon-copy-btn.is-copied .icon-check {
+  display: block;
 }
 
 /* Back to top */
@@ -1568,6 +1603,20 @@ button:focus-visible {
 
   .back-to-top {
     bottom: 84px;
+  }
+
+  .toast {
+    bottom: 84px;
+  }
+
+  /* The gradient mesh scrolls oddly inside the swipeable stats carousel — drop it on mobile */
+  .stats::before {
+    display: none;
+  }
+
+  .icon-copy-btn {
+    width: 44px;
+    height: 44px;
   }
 }
 
